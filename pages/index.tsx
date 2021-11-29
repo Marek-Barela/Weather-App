@@ -1,18 +1,13 @@
-import { Box, Text } from '@chakra-ui/react';
+import PageWrapper from 'components/PageWrapper';
+import SearchForecastView from 'components/SearchForecastView';
 import type { NextPage } from 'next';
-import Head from 'next/head';
 
-const Home: NextPage = () => {
+const SearchForecastPage: NextPage = () => {
   return (
-    <Box>
-      <Head>
-        <title>Weather Forecast</title>
-        <meta name='description' content='Weather forecast application' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <Text>Hello Weather</Text>
-    </Box>
+    <PageWrapper>
+      <SearchForecastView />
+    </PageWrapper>
   );
 };
 
-export default Home;
+export default SearchForecastPage;
