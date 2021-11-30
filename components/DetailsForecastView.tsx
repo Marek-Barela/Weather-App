@@ -1,8 +1,9 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { msToTime } from 'common/helpers/msToTime';
 import { useFetchCurrentWeather } from 'common/hooks/useFetchCurrentWeather';
+import { useFetchFiveDaysWeatherForecast } from 'common/hooks/useFetchFiveDaysWeatherForecast';
 import Image from 'next/image';
-import { ChevronsDown,Droplet, Wind } from 'react-feather';
+import { ChevronsDown, Droplet, Wind } from 'react-feather';
 
 interface DetailsForecastViewProps {
   city: string | string[] | undefined;
@@ -10,8 +11,11 @@ interface DetailsForecastViewProps {
 
 const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
   const { currentWeather } = useFetchCurrentWeather({ city });
+  const { fiveDaysWeather } = useFetchFiveDaysWeatherForecast({ city });
 
   const weatherIcon = currentWeather?.data.weather[0].icon;
+
+  console.log(fiveDaysWeather);
 
   return (
     <>
