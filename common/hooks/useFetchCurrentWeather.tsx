@@ -1,5 +1,6 @@
 import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
+import { CurrentWeather } from 'pages/api/current-weather';
 import { useEffect, useState } from 'react';
 
 interface useFetchCurrentWeatherProps {
@@ -7,7 +8,7 @@ interface useFetchCurrentWeatherProps {
 }
 
 export const useFetchCurrentWeather = ({ city }: useFetchCurrentWeatherProps) => {
-  const [currentWeather, setCurrentWeather] = useState(null);
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeather>();
   const toast = useToast();
 
   useEffect(() => {
@@ -17,7 +18,7 @@ export const useFetchCurrentWeather = ({ city }: useFetchCurrentWeatherProps) =>
         .get('/api/current-weather', {
           params: { city },
         })
-        .then(res => res.data.weather)
+        .then(res => res.data)
         .catch(() => {
           toast({
             title: 'The city was not found',

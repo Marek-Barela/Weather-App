@@ -8,8 +8,8 @@ interface Weather {
   main: string;
 }
 
-type Data = {
-  weather: {
+export type CurrentWeather = {
+  data: {
     base: string;
     clouds: { all: number };
     cod: number;
@@ -36,7 +36,7 @@ type Data = {
 
 export default async function CurrentWeather(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<CurrentWeather>
 ) {
   if (req.method === 'GET') {
     const param = encodeURI(req.query.city as string);
@@ -50,6 +50,6 @@ export default async function CurrentWeather(
         throw err.message;
       });
 
-    res.status(200).json({ weather: currentWeatherDataRequest });
+    res.status(200).json({ data: currentWeatherDataRequest });
   }
 }
