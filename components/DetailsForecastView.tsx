@@ -1,9 +1,18 @@
 import { Box, Text } from '@chakra-ui/react';
+import { useFetchCurrentWeather } from 'common/hooks/useFetchCurrentWeather';
 
-const DetailsForecastView = () => {
+interface DetailsForecastViewProps {
+  city: string | string[] | undefined;
+}
+
+const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
+  const { currentWeather } = useFetchCurrentWeather({ city });
+
+  console.log(currentWeather);
+
   return (
     <Box>
-      <Text>Details View</Text>
+      <Text>{city}</Text>
     </Box>
   );
 };
