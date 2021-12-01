@@ -1,6 +1,6 @@
 import cities from 'cities.json';
 
-interface City {
+export interface City {
   id?: number;
   country: string;
   lat: number;
