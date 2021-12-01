@@ -7,22 +7,23 @@ import {
   InputGroup,
   InputRightElement,
 } from '@chakra-ui/react';
-import { useFetchFiveDaysWeatherForecast } from 'common/hooks/useFetchFiveDaysWeatherForecast';
+import type { City } from 'common/cities';
+import { useFetchOneCallWeatherForecast } from 'common/hooks/useFetchOneCallWeatherForecast';
 import CurrentWeatherContainer from 'components/CurrentWeatherContainer';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Search } from 'react-feather';
 
 interface DetailsForecastViewProps {
-  city: string | string[] | undefined;
+  city: City | undefined;
 }
 
 const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
   const [cityName, setCityName] = useState('');
-  const { fiveDaysWeather } = useFetchFiveDaysWeatherForecast({ city });
+  const lat = city?.lat;
+  const lng = city?.lng;
+  const { weatherForecast } = useFetchOneCallWeatherForecast({ lat, lng });
   const router = useRouter();
-
-  console.log(fiveDaysWeather);
 
   return (
     <Box padding='40px' minH='500px' height='100vh' bgColor='#82B7F1'>
@@ -56,7 +57,7 @@ const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
             </form>
           </Flex>
         </Flex>
-        <CurrentWeatherContainer city={city} />
+        {/* <CurrentWeatherContainer city={city} /> */}
       </Flex>
     </Box>
   );
