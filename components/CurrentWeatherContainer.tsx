@@ -1,32 +1,35 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Spinner, Text } from '@chakra-ui/react';
 import { msToTime } from 'common/helpers/msToTime';
-import { useFetchCurrentWeather } from 'common/hooks/useFetchCurrentWeather';
 import Image from 'next/image';
+import type { OneCallWeatherForecast } from 'pages/api/one-call-weather-forecast';
 import { ChevronsDown, Droplet, Wind } from 'react-feather';
 
 interface CurrentWeatherContainerProps {
-  city: string | string[] | undefined;
+  weatherForecast: OneCallWeatherForecast | undefined;
+  cityName: string | undefined;
 }
 
-const CurrentWeatherContainer = ({ city }: CurrentWeatherContainerProps) => {
-  const { currentWeather } = useFetchCurrentWeather({ city });
-
-  const weatherIcon = currentWeather?.data.weather[0].icon;
+const CurrentWeatherContainer = ({
+  weatherForecast,
+  cityName,
+}: CurrentWeatherContainerProps) => {
+  const currentWeather = weatherForecast?.data.current;
 
   return (
-    <>
+    <Flex
+      width='30%'
+      padding='50px'
+      bgColor='#11103A'
+      borderRadius='0 50px 50px 0'
+      color='white'
+      flexDirection='column'
+      alignItems='center'
+      justifyContent='center'>
       {currentWeather ? (
-        <Flex
-          width='30%'
-          padding='50px'
-          bgColor='#11103A'
-          borderRadius='0 50px 50px 0'
-          color='white'
-          flexDirection='column'
-          alignItems='center'>
+        <>
           <Flex>
             <Image
-              src={`https://openweathermap.org/img/wn/${weatherIcon}.png`}
+              src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}.png`}
               width='50px'
               height='50px'
             />
@@ -41,42 +44,44 @@ const CurrentWeatherContainer = ({ city }: CurrentWeatherContainerProps) => {
           </Flex>
           <Flex mt='30px'>
             <Text fontSize='5em' position='relative' lineHeight='70px'>
-              {Math.round(currentWeather?.data.main.temp)}
+              {Math.round(currentWeather.temp)}
             </Text>
             <Text as='span' fontSize='18px' fontWeight='normal'>
               &#8451;
             </Text>
           </Flex>
           <Text fontSize='2em' mt='10px' textTransform='capitalize'>
-            {city}
+            {cityName}
           </Text>
           <Text fontSize='0.8em'>
-            Feels like {Math.round(currentWeather.data.main.feels_like)} - Sunset{' '}
-            {msToTime(currentWeather.data.sys.sunset * 1000)}
+            Feels like {Math.round(currentWeather.feels_like)} - Sunset{' '}
+            {msToTime(currentWeather.sunset * 1000)}
           </Text>
           <Flex mt='30px'>
             <Flex alignItems='center'>
               <Wind width='20px' height='20px' />
               <Text fontSize='0.8em' ml='5px'>
-                {currentWeather.data.wind.speed} m/h
+                {currentWeather.wind_speed} m/h
               </Text>
             </Flex>
             <Flex alignItems='center' ml='15px'>
               <Droplet width='20px' height='20px' />
               <Text fontSize='0.8em' ml='5px'>
-                {currentWeather.data.main.humidity} %
+                {currentWeather.humidity} %
               </Text>
             </Flex>
             <Flex alignItems='center' ml='15px'>
               <ChevronsDown width='20px' height='20px' />
               <Text fontSize='0.8em' ml='5px'>
-                {currentWeather.data.main.pressure} hPa
+                {currentWeather.pressure} hPa
               </Text>
             </Flex>
           </Flex>
-        </Flex>
-      ) : null}
-    </>
+        </>
+      ) : (
+        <Spinner size='xl' thickness='4px' />
+      )}
+    </Flex>
   );
 };
 
