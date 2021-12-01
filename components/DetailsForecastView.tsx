@@ -20,9 +20,10 @@ interface DetailsForecastViewProps {
 
 const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
   const [cityName, setCityName] = useState('');
-  const lat = city?.lat;
-  const lng = city?.lng;
-  const { weatherForecast } = useFetchOneCallWeatherForecast({ lat, lng });
+  const { weatherForecast } = useFetchOneCallWeatherForecast({
+    lat: city?.lat,
+    lng: city?.lng,
+  });
   const router = useRouter();
 
   return (
@@ -57,7 +58,10 @@ const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
             </form>
           </Flex>
         </Flex>
-        {/* <CurrentWeatherContainer city={city} /> */}
+        <CurrentWeatherContainer
+          weatherForecast={weatherForecast}
+          cityName={city?.name}
+        />
       </Flex>
     </Box>
   );
