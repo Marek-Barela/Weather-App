@@ -20,7 +20,6 @@ const CurrentWeatherContainer = ({
       width='30%'
       padding='50px'
       bgColor='#11103A'
-      borderRadius='0 50px 50px 0'
       color='white'
       flexDirection='column'
       alignItems='center'

@@ -26,9 +26,11 @@ const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
   });
   const router = useRouter();
 
+  console.log(weatherForecast);
+
   return (
-    <Box padding='40px' minH='500px' height='100vh' bgColor='#82B7F1'>
-      <Flex minH='100%' bgColor='#F2FBFF' borderRadius='50px'>
+    <Box minH='600px' height='100vh' bgColor='#82B7F1'>
+      <Flex minH='100%' bgColor='#F2FBFF'>
         <Flex width='70%' padding='60px' direction='column'>
           <Flex justifyContent='space-between' alignItems='center'>
             <Heading as='h2' fontSize='3em' textTransform='capitalize'>
