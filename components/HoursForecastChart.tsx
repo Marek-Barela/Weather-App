@@ -14,9 +14,8 @@ const HoursForecastChart = ({ weatherForecast }: HoursForecastChartProps) => {
     .map(hour => msToTime(hour.dt * 1000))
     .slice(0, 24);
 
-  const data = weatherForecast?.data.hourly
-    .map(hour => Math.round(hour.temp))
-    .slice(0, 24);
+  const data =
+    weatherForecast?.data.hourly.map(hour => Math.round(hour.temp)).slice(0, 24) || [];
 
   const chartData = {
     options: {
@@ -36,7 +35,7 @@ const HoursForecastChart = ({ weatherForecast }: HoursForecastChartProps) => {
   };
 
   return (
-    <Box mt='50px' alignItems='center' flexDirection='column'>
+    <Box alignItems='center' width={{ base: '100%', lg: '50%' }}>
       <Heading as='h3' textAlign='center' fontWeight='bold' fontSize='1.2em'>
         24 hour Forecast
       </Heading>

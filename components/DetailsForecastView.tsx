@@ -60,12 +60,13 @@ const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
               </InputGroup>
             </form>
           </Flex>
-          <CurrentWeatherContainer
-            weatherForecast={weatherForecast}
-            cityName={city?.name}
-          />
-          <Divider />
-          <HoursForecastChart weatherForecast={weatherForecast} />
+          <Flex direction={{ base: 'column', lg: 'row' }} mb='20px'>
+            <CurrentWeatherContainer
+              weatherForecast={weatherForecast}
+              cityName={city?.name}
+            />
+            <HoursForecastChart weatherForecast={weatherForecast} />
+          </Flex>
           <Divider />
           <WeekForecastWidget weatherForecast={weatherForecast} />
         </Flex>
