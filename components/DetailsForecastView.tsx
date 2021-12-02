@@ -10,16 +10,13 @@ import {
   Text,
 } from '@chakra-ui/react';
 import type { City } from 'common/cities';
-import { msToTime } from 'common/helpers/msToTime';
 import { useFetchOneCallWeatherForecast } from 'common/hooks/useFetchOneCallWeatherForecast';
 import CurrentWeatherContainer from 'components/CurrentWeatherContainer';
-import dynamic from 'next/dynamic';
+import HoursForecastChart from 'components/HoursForecastChart';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Search } from 'react-feather';
-
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 interface DetailsForecastViewProps {
   city: City | undefined;
@@ -32,31 +29,6 @@ const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
     lng: city?.lng,
   });
   const router = useRouter();
-
-  const categories = weatherForecast?.data.hourly
-    .map(hour => msToTime(hour.dt * 1000))
-    .slice(0, 24);
-
-  const data = weatherForecast?.data.hourly
-    .map(hour => Math.round(hour.temp))
-    .slice(0, 24);
-
-  const chartData = {
-    options: {
-      chart: {
-        id: 'weather-forecast',
-      },
-      xaxis: {
-        categories: categories,
-      },
-    },
-    series: [
-      {
-        name: 'Temperature',
-        data: data,
-      },
-    ],
-  };
 
   return (
     <Box minH='600px' height='100vh'>
@@ -90,17 +62,7 @@ const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
             </form>
           </Flex>
           <Divider />
-          <Flex mt='50px' alignItems='center' flexDirection='column'>
-            <Heading as='h3' textAlign='center' fontWeight='bold' fontSize='1.2em'>
-              24 hour Forecast
-            </Heading>
-            <Chart
-              options={chartData.options}
-              series={chartData.series}
-              type='line'
-              width='686px'
-            />
-          </Flex>
+          <HoursForecastChart weatherForecast={weatherForecast} />
           <Divider />
           <Flex justifyContent='center' mt='20px' flexDirection='column'>
             <Heading as='h3' textAlign='center' fontWeight='bold' fontSize='1.2em'>
