@@ -12,7 +12,7 @@ const WeekForecastWidget = ({ weatherForecast }: HoursForecastChartProps) => {
       <Heading as='h3' textAlign='center' fontWeight='bold' fontSize='1.2em'>
         7 Days Forecast
       </Heading>
-      <Flex width='100%'>
+      <Flex width='100%' justifyContent='center'>
         {weatherForecast?.data.daily.map((forecast, index) => (
           <Flex
             key={index}
