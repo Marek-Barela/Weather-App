@@ -22,19 +22,17 @@ const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
     <Box minH='600px' height='100vh'>
       <Flex minH='100%'>
         <Flex width='100%' padding='60px' direction='column'>
-          <Box>
-            <Button
-              aria-label='Back to the previous page'
-              borderRadius='full'
-              width='40px'
-              height='40px'
-              mb='20px'
-              padding='12px'
-              colorScheme='blue'
-              onClick={() => router.back()}>
-              <ArrowLeft />
-            </Button>
-          </Box>
+          <Button
+            aria-label='Back to the previous page'
+            borderRadius='full'
+            width='40px'
+            height='40px'
+            mb='20px'
+            padding='12px'
+            colorScheme='blue'
+            onClick={() => router.back()}>
+            <ArrowLeft />
+          </Button>
           <Flex direction={{ base: 'column', lg: 'row' }} mb='20px'>
             <CurrentWeatherContainer
               weatherForecast={weatherForecast}
