@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Spinner } from '@chakra-ui/react';
 import {
   CategoryScale,
   Chart,
@@ -66,11 +66,16 @@ const HoursForecastChart = ({ weatherForecast }: HoursForecastChartProps) => {
 
   return (
     <Flex
-      alignItems='flex-end'
+      alignItems={weatherForecast ? 'flex-end' : 'center'}
+      justifyContent='center'
       width={{ base: '100%', lg: '50%' }}
       marginX={{ base: '0', lg: '25px' }}
       minH='350px'>
-      <Line options={options} data={dataChartJs} />
+      {weatherForecast ? (
+        <Line options={options} data={dataChartJs} />
+      ) : (
+        <Spinner size='xl' thickness='4px' />
+      )}
     </Flex>
   );
 };

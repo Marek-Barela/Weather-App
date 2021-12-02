@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Flex } from '@chakra-ui/react';
+import { Box, Button, Divider, Flex, Text } from '@chakra-ui/react';
 import type { City } from 'common/cities';
 import { useFetchOneCallWeatherForecast } from 'common/hooks/useFetchOneCallWeatherForecast';
 import CurrentWeatherContainer from 'components/CurrentWeatherContainer';
@@ -22,7 +22,20 @@ const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
 
   return (
     <>
-      {cityNotFound ? null : (
+      {cityNotFound ? (
+        <Flex
+          justifyContent='center'
+          alignItems='center'
+          minH='100vh'
+          flexDirection='column'>
+          <Text fontSize='2em' mb='20px'>
+            There are no results for this city
+          </Text>
+          <Button colorScheme='blue' width='100px' onClick={() => router.back()}>
+            Back
+          </Button>
+        </Flex>
+      ) : (
         <Box minH='600px' height='100vh'>
           <Flex minH='100%'>
             <Flex width='100%' padding='60px' direction='column'>
