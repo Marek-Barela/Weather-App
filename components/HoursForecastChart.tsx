@@ -68,7 +68,8 @@ const HoursForecastChart = ({ weatherForecast }: HoursForecastChartProps) => {
     <Flex
       alignItems='flex-end'
       width={{ base: '100%', lg: '50%' }}
-      marginX={{ base: '0', lg: '25px' }}>
+      marginX={{ base: '0', lg: '25px' }}
+      minH='350px'>
       <Line options={options} data={dataChartJs} />
     </Flex>
   );
