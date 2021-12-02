@@ -38,7 +38,7 @@ const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
       ) : (
         <Box minH='600px' height='100vh'>
           <Flex minH='100%'>
-            <Flex width='100%' padding='60px' direction='column'>
+            <Flex width='100%' padding='20px' direction='column'>
               <Button
                 aria-label='Back to the previous page'
                 borderRadius='full'
