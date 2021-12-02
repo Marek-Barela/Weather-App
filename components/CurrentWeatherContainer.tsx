@@ -17,7 +17,7 @@ const CurrentWeatherContainer = ({
 
   return (
     <Flex
-      width='30%'
+      width='100%'
       padding='50px'
       bgColor='#11103A'
       color='white'

@@ -32,7 +32,7 @@ const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
   return (
     <Box minH='600px' height='100vh'>
       <Flex minH='100%'>
-        <Flex width='70%' padding='60px' direction='column'>
+        <Flex width='100%' padding='60px' direction='column'>
           <Flex justifyContent='space-between' alignItems='center' mb='20px'>
             <Heading as='h2' fontSize='3em' textTransform='capitalize'>
               Weather forecast
@@ -60,15 +60,15 @@ const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
               </InputGroup>
             </form>
           </Flex>
+          <CurrentWeatherContainer
+            weatherForecast={weatherForecast}
+            cityName={city?.name}
+          />
           <Divider />
           <HoursForecastChart weatherForecast={weatherForecast} />
           <Divider />
           <WeekForecastWidget weatherForecast={weatherForecast} />
         </Flex>
-        <CurrentWeatherContainer
-          weatherForecast={weatherForecast}
-          cityName={city?.name}
-        />
       </Flex>
     </Box>
   );
