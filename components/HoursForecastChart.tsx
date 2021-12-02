@@ -1,51 +1,76 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
+import {
+  CategoryScale,
+  Chart,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+} from 'chart.js';
 import { msToTime } from 'common/helpers/msToTime';
-import dynamic from 'next/dynamic';
 import { OneCallWeatherForecast } from 'pages/api/one-call-weather-forecast';
+import { Line } from 'react-chartjs-2';
 
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
+Chart.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const options = {
+  resposive: true,
+  plugins: {
+    legend: {
+      display: false,
+    },
+    title: {
+      display: true,
+      text: '24 hour forecast',
+      font: {
+        size: 20,
+      },
+      color: 'black',
+    },
+  },
+  maintainAspectRatio: false,
+};
 
 interface HoursForecastChartProps {
   weatherForecast: OneCallWeatherForecast | undefined;
 }
 
 const HoursForecastChart = ({ weatherForecast }: HoursForecastChartProps) => {
-  const categories = weatherForecast?.data.hourly
-    .map(hour => msToTime(hour.dt * 1000))
-    .slice(0, 24);
+  const categories =
+    weatherForecast?.data.hourly.map(hour => msToTime(hour.dt * 1000)).slice(0, 24) || [];
 
   const data =
     weatherForecast?.data.hourly.map(hour => Math.round(hour.temp)).slice(0, 24) || [];
 
-  const chartData = {
-    options: {
-      chart: {
-        id: 'weather-forecast',
-      },
-      xaxis: {
-        categories: categories,
-      },
-    },
-    series: [
+  const dataChartJs = {
+    labels: categories,
+    datasets: [
       {
-        name: 'Temperature',
+        label: 'Temperature',
         data: data,
+        borderColor: 'rgb(53, 162, 235)',
+        backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
   };
 
   return (
-    <Box alignItems='center' width={{ base: '100%', lg: '50%' }}>
-      <Heading as='h3' textAlign='center' fontWeight='bold' fontSize='1.2em'>
-        24 hour Forecast
-      </Heading>
-      <Chart
-        options={chartData.options}
-        series={chartData.series}
-        type='line'
-        width='100%'
-      />
-    </Box>
+    <Flex
+      alignItems='flex-end'
+      width={{ base: '100%', lg: '50%' }}
+      marginX={{ base: '0', lg: '25px' }}>
+      <Line options={options} data={dataChartJs} />
+    </Flex>
   );
 };
 

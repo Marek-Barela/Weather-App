@@ -9,7 +9,7 @@ interface HoursForecastChartProps {
 const WeekForecastWidget = ({ weatherForecast }: HoursForecastChartProps) => {
   return (
     <Flex justifyContent='center' mt='20px' flexDirection='column'>
-      <Heading as='h3' textAlign='center' fontWeight='bold' fontSize='1.2em'>
+      <Heading as='h3' textAlign='center' fontWeight='bold' fontSize='20px'>
         7 Days Forecast
       </Heading>
       <Flex width='100%' justifyContent='center' flexWrap='wrap'>
