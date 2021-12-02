@@ -100,9 +100,7 @@ export default async function oneCallWeatherForecast(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&appid=${process.env.NEXT_PRIVATE_API_FORECAST_KEY}`
       )
       .then(res => res.data)
-      .catch(err => {
-        throw err.message;
-      });
+      .catch(err => err.message);
 
     res.status(200).json({ data: weatherForecastDataRequest });
   }

@@ -13,21 +13,37 @@ export const useFetchOneCallWeatherForecast = ({
   lng,
 }: useFetchOneCallWeatherForecastProps) => {
   const [weatherForecast, setWeatherForecast] = useState<OneCallWeatherForecast>();
+  const [isLoading, setIsLoading] = useState(true);
   const toast = useToast();
 
   useEffect(() => {
     const asyncRequestWrapper = async () => {
-      if (lat === undefined || lng === undefined) return;
       const weatherForecastDataRequest = await axios
         .get('/api/one-call-weather-forecast', {
           params: { lat, lng },
         })
-        .then(res => res.data)
+        .then(res => {
+          if (res.data.data === 'Request failed with status code 400') {
+            toast({
+              title: 'The city was not found',
+              description: 'There are no results for the given city',
+              status: 'error',
+              duration: 5000,
+              isClosable: true,
+            });
+
+            setIsLoading(false);
+            return undefined;
+          } else {
+            setIsLoading(false);
+            return res.data;
+          }
+        })
         .catch(() => {
           toast({
-            title: 'The city was not found',
-            description: 'There are no results for the given city',
-            status: 'info',
+            title: 'Error',
+            description: 'Error occured during city searching',
+            status: 'error',
             duration: 5000,
             isClosable: true,
           });
@@ -39,5 +55,5 @@ export const useFetchOneCallWeatherForecast = ({
     asyncRequestWrapper();
   }, [lat, lng]);
 
-  return { weatherForecast };
+  return { weatherForecast, isLoading };
 };
