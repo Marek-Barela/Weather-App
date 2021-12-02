@@ -1,4 +1,4 @@
-import { Box, Divider,Flex, Input, InputGroup, Stack, Text } from '@chakra-ui/react';
+import { Box, Divider, Flex, Input, InputGroup, Stack, Text } from '@chakra-ui/react';
 import { citiesList } from 'common/cities';
 import { popularCities } from 'common/popularCities';
 import { useRouter } from 'next/router';
@@ -103,7 +103,7 @@ const SearchForecastView = () => {
         </Text>
         <Flex flexWrap='wrap' justifyContent='center' alignItems='center'>
           {popularCities.map(city => (
-            <Box key={city.id} m='0 30px 30px 0'>
+            <Box key={city.id} m='0 15px 30px 15px'>
               <Box
                 onClick={() => router.push(`/forecast/${city.url}`)}
                 width='200px'
