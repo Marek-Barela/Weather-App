@@ -17,13 +17,14 @@ const CurrentWeatherContainer = ({
 
   return (
     <Flex
-      width='100%'
       padding='50px'
+      width={{ base: '100%', lg: '50%' }}
       bgColor='#11103A'
       color='white'
       flexDirection='column'
       alignItems='center'
-      justifyContent='center'>
+      justifyContent='center'
+      mb={{ base: '30px', lg: '0px' }}>
       {currentWeather ? (
         <>
           <Flex>
