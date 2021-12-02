@@ -1,4 +1,4 @@
-import { Flex, Heading } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import { msToTime } from 'common/helpers/msToTime';
 import dynamic from 'next/dynamic';
 import { OneCallWeatherForecast } from 'pages/api/one-call-weather-forecast';
@@ -36,7 +36,7 @@ const HoursForecastChart = ({ weatherForecast }: HoursForecastChartProps) => {
   };
 
   return (
-    <Flex mt='50px' alignItems='center' flexDirection='column'>
+    <Box mt='50px' alignItems='center' flexDirection='column'>
       <Heading as='h3' textAlign='center' fontWeight='bold' fontSize='1.2em'>
         24 hour Forecast
       </Heading>
@@ -44,9 +44,9 @@ const HoursForecastChart = ({ weatherForecast }: HoursForecastChartProps) => {
         options={chartData.options}
         series={chartData.series}
         type='line'
-        width='686px'
+        width='100%'
       />
-    </Flex>
+    </Box>
   );
 };
 
