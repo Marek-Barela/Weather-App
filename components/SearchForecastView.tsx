@@ -1,4 +1,13 @@
-import { Box, Divider, Flex, Input, InputGroup, Stack, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Divider,
+  Flex,
+  Heading,
+  Input,
+  InputGroup,
+  Stack,
+  Text,
+} from '@chakra-ui/react';
 import { citiesList } from 'common/cities';
 import { popularCities } from 'common/popularCities';
 import { useRouter } from 'next/router';
@@ -45,6 +54,17 @@ const SearchForecastView = () => {
 
   return (
     <Flex height='100vh' alignItems='center' flexDirection='column' paddingY='100px'>
+      <Heading
+        as='h1'
+        fontSize='3.5em'
+        textTransform='uppercase'
+        my='20px'
+        textAlign='center'
+        fontWeight='bold'
+        mb='40px'
+        letterSpacing='10px'>
+        Weather Forecast
+      </Heading>
       <Flex flexDirection='column' width='100%' maxWidth='600px' padding='0 30px'>
         <InputGroup>
           <Input
@@ -98,9 +118,15 @@ const SearchForecastView = () => {
         </Flex>
       </Flex>
       <Flex width='100%' maxWidth='1200px' padding='0 30px' flexDirection='column'>
-        <Text fontSize='1.5em' textTransform='uppercase' my='20px' textAlign='center'>
+        <Heading
+          as='h2'
+          fontSize='1.3em'
+          textTransform='uppercase'
+          my='30px'
+          textAlign='center'
+          fontWeight='bold'>
           Popular Cities
-        </Text>
+        </Heading>
         <Flex flexWrap='wrap' justifyContent='center' alignItems='center'>
           {popularCities.map(city => (
             <Box key={city.id} m='0 15px 30px 15px'>
