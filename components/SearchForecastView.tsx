@@ -1,7 +1,8 @@
-import { Flex, Input, InputGroup, Stack,Text } from '@chakra-ui/react';
+import { Box, Divider,Flex, Input, InputGroup, Stack, Text } from '@chakra-ui/react';
 import { citiesList } from 'common/cities';
+import { popularCities } from 'common/popularCities';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 interface City {
   id?: number;
@@ -14,6 +15,7 @@ interface City {
 
 const SearchForecastView = () => {
   const [cityName, setCityName] = useState('');
+  const [isActiveInput, setIsActiveInput] = useState(false);
   const [filtredCities, setFiltredCities] = useState<City[]>([]);
   const router = useRouter();
 
@@ -42,45 +44,89 @@ const SearchForecastView = () => {
   };
 
   return (
-    <Flex
-      height='100vh'
-      minH='400px'
-      justifyContent='flex-start'
-      alignItems='center'
-      background='linear-gradient(to bottom, #ff7e5f, #feb47b)'
-      flexDirection='column'
-      paddingY='100px'>
-      <InputGroup width='600px'>
-        <Input
-          variant='solid'
-          value={cityName}
-          onChange={e => handleInputChange(e.target.value)}
-          placeholder='Enter city name'
-          backgroundColor='white'
-          height='50px'
-          pl='30px'
-        />
-      </InputGroup>
-      <Stack width='600px' mt='10px'>
-        {filtredCities.map((city, index) => {
-          return (
-            <Flex
-              key={index}
-              onClick={() => router.push(`/forecast/${city.url}`)}
-              bgColor='white'
+    <Flex height='100vh' alignItems='center' flexDirection='column' paddingY='100px'>
+      <Flex flexDirection='column' width='100%' maxWidth='600px' padding='0 30px'>
+        <InputGroup>
+          <Input
+            variant='outline'
+            value={cityName}
+            onChange={e => handleInputChange(e.target.value)}
+            onFocus={() => setIsActiveInput(true)}
+            onBlur={() => setIsActiveInput(false)}
+            placeholder='Enter city name'
+            backgroundColor='white'
+            height='50px'
+            focusBorderColor='#B83280'
+            pl='30px'
+          />
+        </InputGroup>
+        <Flex position='relative' flexDirection='column'>
+          {isActiveInput && filtredCities.length > 0 && (
+            <Stack
+              mt='10px'
+              position='absolute'
               width='100%'
-              height='50px'
-              alignItems='center'
-              borderRadius='5px'
-              cursor='pointer'
-              _hover={{ color: 'red.500' }}>
-              <Text pl='30px' fontWeight='bold'>
-                {city.name} - {city.country}
+              backgroundColor='white'
+              padding='20px'
+              borderRadius='10px'
+              border='2px solid #B83280'
+              zIndex='1000'>
+              {filtredCities.map((city, index) => {
+                return (
+                  <Fragment key={index}>
+                    {index !== 0 && <Divider />}
+                    <Flex
+                      onMouseDown={e => e.preventDefault()}
+                      onMouseUp={() => router.push(`/forecast/${city.url}`)}
+                      bgColor='white'
+                      minW='300px'
+                      width='100%'
+                      height='50px'
+                      alignItems='center'
+                      borderRadius='5px'
+                      cursor='pointer'
+                      _hover={{ color: 'red.500' }}>
+                      <Text pl='30px' fontWeight='bold'>
+                        {city.name} - {city.country}
+                      </Text>
+                    </Flex>
+                  </Fragment>
+                );
+              })}
+            </Stack>
+          )}
+        </Flex>
+      </Flex>
+      <Flex width='100%' maxWidth='1200px' padding='0 30px' flexDirection='column'>
+        <Text fontSize='1.5em' textTransform='uppercase' my='20px' textAlign='center'>
+          Popular Cities
+        </Text>
+        <Flex flexWrap='wrap' justifyContent='center' alignItems='center'>
+          {popularCities.map(city => (
+            <Box key={city.id} m='0 30px 30px 0'>
+              <Box
+                onClick={() => router.push(`/forecast/${city.url}`)}
+                width='200px'
+                height='280px'
+                borderRadius='20px'
+                backgroundImage={city.image}
+                backgroundSize='cover'
+                justifyContent='center'
+                alignItems='center'
+                cursor='pointer'
+                _hover={{ opacity: 0.8 }}
+              />
+              <Text
+                fontSize='15px'
+                textTransform='uppercase'
+                textAlign='center'
+                fontWeight='bold'>
+                {city.name}
               </Text>
-            </Flex>
-          );
-        })}
-      </Stack>
+            </Box>
+          ))}
+        </Flex>
+      </Flex>
     </Flex>
   );
 };
