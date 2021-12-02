@@ -12,39 +12,45 @@ interface DetailsForecastViewProps {
 }
 
 const DetailsForecastView = ({ city }: DetailsForecastViewProps) => {
-  const { weatherForecast } = useFetchOneCallWeatherForecast({
+  const { weatherForecast, isLoading } = useFetchOneCallWeatherForecast({
     lat: city?.lat,
     lng: city?.lng,
   });
   const router = useRouter();
 
+  const cityNotFound = !isLoading && weatherForecast === undefined;
+
   return (
-    <Box minH='600px' height='100vh'>
-      <Flex minH='100%'>
-        <Flex width='100%' padding='60px' direction='column'>
-          <Button
-            aria-label='Back to the previous page'
-            borderRadius='full'
-            width='40px'
-            height='40px'
-            mb='20px'
-            padding='12px'
-            colorScheme='blue'
-            onClick={() => router.back()}>
-            <ArrowLeft />
-          </Button>
-          <Flex direction={{ base: 'column', lg: 'row' }} mb='20px'>
-            <CurrentWeatherContainer
-              weatherForecast={weatherForecast}
-              cityName={city?.name}
-            />
-            <HoursForecastChart weatherForecast={weatherForecast} />
+    <>
+      {cityNotFound ? null : (
+        <Box minH='600px' height='100vh'>
+          <Flex minH='100%'>
+            <Flex width='100%' padding='60px' direction='column'>
+              <Button
+                aria-label='Back to the previous page'
+                borderRadius='full'
+                width='40px'
+                height='40px'
+                mb='20px'
+                padding='12px'
+                colorScheme='blue'
+                onClick={() => router.back()}>
+                <ArrowLeft />
+              </Button>
+              <Flex direction={{ base: 'column', lg: 'row' }} mb='20px'>
+                <CurrentWeatherContainer
+                  weatherForecast={weatherForecast}
+                  cityName={city?.name}
+                />
+                <HoursForecastChart weatherForecast={weatherForecast} />
+              </Flex>
+              <Divider />
+              <WeekForecastWidget weatherForecast={weatherForecast} />
+            </Flex>
           </Flex>
-          <Divider />
-          <WeekForecastWidget weatherForecast={weatherForecast} />
-        </Flex>
-      </Flex>
-    </Box>
+        </Box>
+      )}
+    </>
   );
 };
 
