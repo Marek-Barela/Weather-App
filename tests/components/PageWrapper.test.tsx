@@ -1,5 +1,5 @@
-import { render } from '../test-utils';
-import PageWrapper from '../../components/PageWrapper';
+import PageWrapper from 'components/PageWrapper';
+import { render } from 'tests/test-utils';
 
 describe('PageWrapper', () => {
   it('Should render properly without crashing', () => {

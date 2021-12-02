@@ -1,6 +1,7 @@
-import { render } from '@testing-library/react';
-import { ChakraProvider } from '@chakra-ui/react';
 import '@testing-library/jest-dom';
+
+import { ChakraProvider } from '@chakra-ui/react';
+import { render } from '@testing-library/react';
 
 const ChakraRenderer: React.FC = ({ children }) => {
   return <ChakraProvider>{children}</ChakraProvider>;

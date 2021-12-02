@@ -79,7 +79,7 @@ const CurrentWeatherContainer = ({
           </Flex>
         </>
       ) : (
-        <Spinner size='xl' thickness='4px' />
+        <Spinner aria-label='waiting for data' size='xl' thickness='4px' />
       )}
     </Flex>
   );
