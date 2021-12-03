@@ -45,7 +45,6 @@ interface HourlyWeather {
   humidity: number;
   pop: number;
   pressure: number;
-  rain: { '1h': number };
   temp: number;
   uvi: number;
   visibility: number;
