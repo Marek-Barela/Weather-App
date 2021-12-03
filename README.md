@@ -11,6 +11,7 @@ React / Next.js application for providing weather information [Open Weather API]
 - 24 hour weather forecast
 - Forecast for 7 days
 - List of popular cities
+- Application is fully responsive
 
 ## Live
 
