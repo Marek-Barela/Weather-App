@@ -22,6 +22,7 @@
     "framer-motion": "^4",
     "jest-date-mock": "^1.0.8",
     "next": "12.0.4",
+    "next-router-mock": "^0.6.3",
     "react": "17.0.2",
     "react-chartjs-2": "^4.0.0",
     "react-dom": "17.0.2",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "13.5.0",
     "@types/node": "16.11.10",
     "@types/react": "17.0.37",
     "babel-jest": "^27.4.2",
