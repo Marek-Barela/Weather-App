@@ -68,6 +68,7 @@ const SearchForecastView = () => {
       <Flex flexDirection='column' width='100%' maxWidth='600px' padding='0 30px'>
         <InputGroup>
           <Input
+            aria-label='Enter city name'
             variant='outline'
             value={cityName}
             onChange={e => handleInputChange(e.target.value)}
@@ -131,6 +132,7 @@ const SearchForecastView = () => {
           {popularCities.map(city => (
             <Box key={city.id} m='0 15px 30px 15px'>
               <Box
+                aria-label={`select ${city.name}`}
                 onClick={() => router.push(`/forecast/${city.url}`)}
                 width='200px'
                 height='280px'
