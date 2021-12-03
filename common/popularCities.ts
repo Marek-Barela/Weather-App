@@ -2,8 +2,8 @@ export const popularCities = [
   {
     country: 'PL',
     id: 88634,
-    lat: 52.22977,
-    lng: 21.01178,
+    lat: '52.22977',
+    lng: '21.01178',
     name: 'Warszawa',
     url: 'warszawa-88634',
     image: '/warsaw.jpeg',

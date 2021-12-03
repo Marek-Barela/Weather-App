@@ -6,8 +6,8 @@ const mockCity = {
   id: 1,
   country: 'PL',
   name: 'Warszawa',
-  lat: 52.22977,
-  lng: 21.01178,
+  lat: '52.22977',
+  lng: '21.01178',
 };
 
 describe('DetailsForecastView', () => {

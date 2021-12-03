@@ -16,8 +16,8 @@ import { Fragment, useState } from 'react';
 interface City {
   id?: number;
   country: string;
-  lat: number;
-  lng: number;
+  lat: string;
+  lng: string;
   name: string;
   url?: string;
 }
