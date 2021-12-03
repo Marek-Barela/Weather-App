@@ -4,8 +4,8 @@ import { OneCallWeatherForecast } from 'pages/api/one-call-weather-forecast';
 import { useEffect, useState } from 'react';
 
 interface useFetchOneCallWeatherForecastProps {
-  lat: number | undefined;
-  lng: number | undefined;
+  lat: string | undefined;
+  lng: string | undefined;
 }
 
 export const useFetchOneCallWeatherForecast = ({

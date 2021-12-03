@@ -3,16 +3,16 @@ import cities from 'cities.json';
 export interface City {
   id?: number;
   country: string;
-  lat: number;
-  lng: number;
+  lat: string;
+  lng: string;
   name: string;
 }
 
 const warsaw: City = {
   country: 'PL',
   name: 'Warszawa',
-  lat: 52.22977,
-  lng: 21.01178,
+  lat: '52.22977',
+  lng: '21.01178',
 };
 
 // There is no native name for capital city so let's replace it
