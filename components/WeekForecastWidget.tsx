@@ -33,6 +33,7 @@ const WeekForecastWidget = ({ weatherForecast }: HoursForecastChartProps) => {
                   src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
                   width='50px'
                   height='50px'
+                  alt={`${forecast.weather[0].description}`}
                 />
                 <Flex fontSize='0.7em' justifyContent='center' fontWeight='bold'>
                   <Text mr='6px'>{Math.round(forecast.temp.day)}&#8451;</Text> |
