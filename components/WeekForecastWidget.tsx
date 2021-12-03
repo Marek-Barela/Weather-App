@@ -1,4 +1,4 @@
-import { Flex, Heading, Spinner,Text } from '@chakra-ui/react';
+import { Flex, Heading, Spinner, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import { OneCallWeatherForecast } from 'pages/api/one-call-weather-forecast';
 
