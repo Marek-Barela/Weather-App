@@ -1,5 +1,5 @@
 import DetailsForecastView from 'components/DetailsForecastView';
-import { render } from 'tests/test-utils';
+import { render, screen } from 'tests/test-utils';
 
 const mockCity = {
   id: 1,
@@ -12,5 +12,11 @@ const mockCity = {
 describe('DetailsForecastView', () => {
   it('Should render properly without crashin', async () => {
     render(<DetailsForecastView city={mockCity} />);
+  });
+
+  it('Should render not results message', async () => {
+    render(<DetailsForecastView city={undefined} />);
+
+    await screen.findByText('There are no results for this city');
   });
 });
