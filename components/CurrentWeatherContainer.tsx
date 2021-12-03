@@ -32,6 +32,7 @@ const CurrentWeatherContainer = ({
               src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}.png`}
               width='50px'
               height='50px'
+              alt={`${currentWeather.weather[0].description}`}
             />
             <Box>
               <Text fontSize='1.2em' fontWeight='bold'>
