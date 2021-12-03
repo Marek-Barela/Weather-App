@@ -56,13 +56,14 @@ const SearchForecastView = () => {
     <Flex height='100vh' alignItems='center' flexDirection='column' paddingY='100px'>
       <Heading
         as='h1'
-        fontSize='3.5em'
+        fontSize={{ base: '8vw', md: '5vw', lg: '3.5em' }}
         textTransform='uppercase'
         my='20px'
         textAlign='center'
         fontWeight='bold'
         mb='40px'
-        letterSpacing='10px'>
+        letterSpacing='10px'
+        padding='0 30px'>
         Weather Forecast
       </Heading>
       <Flex flexDirection='column' width='100%' maxWidth='600px' padding='0 30px'>
@@ -100,7 +101,6 @@ const SearchForecastView = () => {
                       onMouseDown={e => e.preventDefault()}
                       onMouseUp={() => router.push(`/forecast/${city.url}`)}
                       bgColor='white'
-                      minW='300px'
                       width='100%'
                       height='50px'
                       alignItems='center'
