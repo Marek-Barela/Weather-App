@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/Marek-Barela/Weather-App/main/public/project-image.avif?token=AHKVYTGYVS7B7SERZVPEESLBVHKV4)
+![alt text](https://github.com/Marek-Barela/Weather-App/blob/main/public/project-image.png?raw=true)
 
 # Weather Forecast
 
