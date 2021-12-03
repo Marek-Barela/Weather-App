@@ -6,7 +6,7 @@ export const popularCities = [
     lng: '21.01178',
     name: 'Warszawa',
     url: 'warszawa-88634',
-    image: '/warsaw.jpeg',
+    image: '/warsaw.avif',
   },
   {
     country: 'FR',
@@ -15,7 +15,7 @@ export const popularCities = [
     lng: '2.3488',
     name: 'Paris',
     url: 'paris-37679',
-    image: '/paris-france.jpg',
+    image: '/paris-france.avif',
   },
   {
     country: 'US',
@@ -24,7 +24,7 @@ export const popularCities = [
     lng: '-74.00597',
     name: 'New York City',
     url: 'new-york-city-120658',
-    image: '/new-york-city.jpg',
+    image: '/new-york-city.avif',
   },
   {
     country: 'GB',
@@ -33,7 +33,7 @@ export const popularCities = [
     lng: '-0.12574',
     name: 'London',
     url: 'london-45042',
-    image: '/london-england.jpg',
+    image: '/london-england.avif',
   },
   {
     country: 'TH',
@@ -42,7 +42,7 @@ export const popularCities = [
     lng: '100.50144',
     name: 'Bangkok',
     url: 'bangkok-105294',
-    image: '/bangkok-thailand.jpg',
+    image: '/bangkok-thailand.avif',
   },
   {
     country: 'HK',
@@ -51,7 +51,7 @@ export const popularCities = [
     lng: '114.17469',
     name: 'Hong Kong',
     url: 'hong-kong-49551',
-    image: '/hong-kong.jpg',
+    image: '/hong-kong.avif',
   },
   {
     country: 'AE',
@@ -60,7 +60,7 @@ export const popularCities = [
     lng: '55.17128',
     name: 'Dubai',
     url: 'dubai-14',
-    image: '/dubai-united-arab-emirates.jpg',
+    image: '/dubai-united-arab-emirates.avif',
   },
   {
     country: 'SG',
@@ -69,6 +69,6 @@ export const popularCities = [
     lng: '103.85007',
     name: 'Singapore',
     url: 'singapore-103513',
-    image: '/singapore.jpg',
+    image: '/singapore.avif',
   },
 ];
