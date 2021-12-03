@@ -1,7 +1,7 @@
 module.exports = {
   roots: ['<rootDir>'],
   collectCoverageFrom: ['{common,components,pages}/**/*.{ts,tsx,js,jsx}'],
-  setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ['./tests/testSetup.ts'],
   moduleNameMapper: {
     '^components/(.*)$': '<rootDir>/components/$1',
     '^pages/(.*)$': '<rootDir>/pages/$1',

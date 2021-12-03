@@ -9,7 +9,11 @@ const CityNotFound = () => {
       <Text fontSize='2em' mb='20px'>
         There are no results for this city
       </Text>
-      <Button colorScheme='blue' width='100px' onClick={() => router.back()}>
+      <Button
+        colorScheme='blue'
+        width='100px'
+        onClick={() => router.back()}
+        aria-label='Back to the previous page'>
         Back
       </Button>
     </Flex>
